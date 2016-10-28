@@ -3,7 +3,7 @@ setup(
   name = 'reldi',
   packages = ['reldi'],
   py_modules = ['reldi'],
-  version = '1.3',
+  version = '1.4',
   description = 'Reldi library',
   author = 'Filip Petkovski',
   author_email = 'filip.petkovsky@gmail.com',
