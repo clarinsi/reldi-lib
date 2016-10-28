@@ -5,11 +5,9 @@ reldi/__init__.py
 reldi/auth.py
 reldi/client.py
 reldi/connection.py
+reldi/dependency_parser.py
 reldi/exceptions.py
 reldi/lemmatiser.py
 reldi/lexicon.py
-reldi/lib.py
-reldi/restore_all.py
 reldi/restorer.py
-reldi/tag_all.py
 reldi/tagger.py
