@@ -4,14 +4,14 @@ import json
 import re
 
 
-class DependencyParser(Client):
+class Parser(Client):
     """Lexicon class"""
 
     def __init__(self, language='hr'):
-        super(DependencyParser, self).__init__()
+        super(Parser, self).__init__()
         self.language = language
 
-    def depparse(self, text, format='json'):
+    def tagLemmatiseParse(self, text, format='json'):
 
         if not self._auth.hasToken():
             raise ValueError("Unauthorized")
