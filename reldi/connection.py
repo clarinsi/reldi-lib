@@ -1,5 +1,10 @@
 import httplib, urllib
 
+config = {
+    'url': 'www.clarin.si',
+    'port': 80,
+    'path': "/services/api/v1/"
+}
 
 class Connection:
     # Must be passed into the constructor. Ensures the constructor is private
@@ -12,14 +17,8 @@ class Connection:
         if token is not self._THE_MAGIC_WORD:
             raise ValueError('This is a private constructor. Plase use ::getInstance()')
 
-        config = self.getServerConfig()
         self._connection = httplib.HTTPConnection(config['url'], config['port'])
 
-    def getServerConfig(self):
-        return {
-            'url': '193.198.213.31',
-            'port': 8080
-        }
 
     @classmethod
     def getInstance(cls):

@@ -40,4 +40,4 @@ class Lexicon(Client):
         # if rhyming_function is not None:
         #     params['rhyming_function'] = marshal.dumps(rhyming_function.func_code)
 
-        return self.queryApi("/api/v1/{0}/lexicon".format(self.language), params)
+        return self.queryApi("{0}/lexicon".format(self.language), params)

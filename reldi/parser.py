@@ -31,4 +31,4 @@ class Parser(Client):
             'format': format
         }
 
-        return self.queryApi("/api/v1/{0}/tag_lemmatise_depparse".format(self.language), params)
+        return self.queryApi("{0}/tag_lemmatise_depparse".format(self.language), params)

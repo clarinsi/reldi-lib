@@ -9,10 +9,10 @@ coding='utf8'
 
 def write(result,file):
     final=set()
-    for sentence in result['sentences']:
+    for sentence in result['sentences']['sentence']:
         final.add(sentence['tokenIDs'].split(' ')[-1])
-    for token,lemma,tag in zip(result['tokens'],result['lemmas'],result['POSTags']):
-        file.write((token['value']+'\t'+lemma['value']+'\t'+tag['value']+'\n').decode('utf8').encode(coding))
+    for token,lemma,tag in zip(result['tokens']['token'],result['lemmas']['lemma'],result['POStags']['tag']):
+        file.write((token['text']+'\t'+lemma['text']+'\t'+tag['text']+'\n').decode('utf8').encode(coding))
         if token['ID'] in final:
             file.write('\n')
     file.close()
@@ -26,8 +26,8 @@ if __name__ == "__main__":
     tagger = Tagger(args.lang)
     tagger.authorize(user, passwd)
     if os.path.isfile(args.path):
-        write(eval(tagger.tagLemmatise(open(args.path).read().decode(coding).encode('utf8'))),open(args.path+'.taglem','w'))
+        write(eval(tagger.tagNER(open(args.path).read().decode(coding).encode('utf8'))),open(args.path+'.taglem','w'))
     else:
         for file in os.listdir(args.path):
             if file.endswith('.txt'):
-                write(eval(tagger.tagLemmatise(open(os.path.join(args.path,file)).read().decode(coding).encode('utf8'))),open(os.path.join(args.path,file)+'.taglem','w'))
+                write(eval(tagger.tagNER(open(os.path.join(args.path,file)).read().decode(coding).encode('utf8'))),open(os.path.join(args.path,file)+'.taglem','w'))

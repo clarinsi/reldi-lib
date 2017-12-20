@@ -25,7 +25,7 @@ class Tagger(Client):
             'format': format
         }
 
-        return self.queryApi("/api/v1/{0}/tag".format(self.language), params)
+        return self.queryApi("{0}/tag".format(self.language), params)
 
     def tagLemmatise(self, text, format='json'):
 
@@ -43,4 +43,22 @@ class Tagger(Client):
             'format': format
         }
 
-        return self.queryApi("/api/v1/{0}/tag_lemmatise".format(self.language), params)
+        return self.queryApi("{0}/tag_lemmatise".format(self.language), params)
+
+    def tagNER(self, text, format='json'):
+
+        if not self._auth.hasToken():
+            raise ValueError("Unauthorized")
+
+        if self.language is None:
+            raise ValueError("Language not set")
+
+        if text is None:
+            raise ValueError("Please specify the input text")
+
+        params = {
+            'text': text,
+            'format': format
+        }
+
+        return self.queryApi("{0}/tag_ner".format(self.language), params)

@@ -1,8 +1,7 @@
 # from exceptions import ApiException
-from connection import Connection
+from connection import Connection, config
 from auth import Auth
-import json
-import uuid;
+import uuid
 
 class Client(object):
     def __init__(self):
@@ -22,7 +21,7 @@ class Client(object):
     def queryApi(self, url, params):
         # First try
         params['request-id'] = uuid.uuid4().__str__()
-        response = self._connection.get(url, params, self._auth.getToken())
+        response = self._connection.get("%s%s" % (config['path'],url), params, self._auth.getToken())
         if response.status is 200:
             data_result = response.read()
             return data_result

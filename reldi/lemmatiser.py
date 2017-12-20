@@ -31,4 +31,4 @@ class Lemmatiser(Client):
             'format': format
         }
 
-        return self.queryApi("/api/v1/{0}/lemmatise".format(self.language), params)
+        return self.queryApi("{0}/lemmatise".format(self.language), params)

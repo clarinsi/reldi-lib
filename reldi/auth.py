@@ -1,4 +1,4 @@
-from connection import Connection
+from connection import Connection, config
 import json
 
 
@@ -8,7 +8,7 @@ class Auth(object):
         self._token = None
 
     def requestToken(self, username, password):
-        url = "/api/v1/login"
+        url = "%slogin" % config['path']
         if username is None:
             raise ValueError("Username not specified")
 
