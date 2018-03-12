@@ -25,4 +25,4 @@ class NERTagger(Client):
             'format': format
         }
 
-        return self.queryApi("{0}/tag_ner".format(self.language), params)
+        return self.queryApi("{0}/tag_lemmatise_ner".format(self.language), params)
