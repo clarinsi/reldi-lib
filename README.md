@@ -13,6 +13,7 @@ The papers describing specific technologies (that should be cited if the technol
 - diacritic restoration: Corpus-Based Diacritic Restoration for South Slavic Languages [[pdf]](http://nlp.ffzg.hr/data/publications/nljubesi/ljubesic16-corpus.pdf) [[bib]](http://nlp.ffzg.hr/data/publications/nljubesi/ljubesic16-corpus.txt)
 - tagging: Corpus vs. Lexicon Supervision in Morphosyntactic Tagging: the Case of Slovene [[pdf]](http://nlp.ffzg.hr/data/publications/nljubesi/ljubesic16b-corpus.pdf) [[bib]](http://nlp.ffzg.hr/data/publications/nljubesi/ljubesic16b-corpus.txt), New Inflectional Lexicons and Training Corpora for Improved Morphosyntactic Annotation of Croatian and Serbian [[pdf]](http://nlp.ffzg.hr/data/publications/nljubesi/ljubesic16-new.pdf) [[bib]](http://nlp.ffzg.hr/data/publications/nljubesi/ljubesic16-new.txt)
 - dependency parsing: Universal Dependencies for Croatian (that Work for Serbian, too) [[pdf]](http://nlp.ffzg.hr/data/publications/nljubesi/agic15-universal.pdf) [[bib]](http://nlp.ffzg.hr/data/publications/nljubesi/agic15-universal.txt)
+- named entity recognition: based on the [[janes-ner]](https://github.com/clarinsi/janes-ner) NER tagger
 
 ## Installing the library
 
@@ -31,26 +32,34 @@ The easiest way to use the library is through two handy scripts available from t
 If you require diacritic restoration, you want to use the ```restore_all.py``` script.
 
 ```
-$ python restore_all.py hr example.txt
+$ python restore_all.py hr examples/example.txt
 ```
 
-You can observe the output of the script in the file ```example.txt.redi```. Notice that batch file processing is available as well. You can get more info by running ```$ python restore_all.py -h```.
+You can observe the output of the script in the file ```examples/example.txt.redi```. Notice that batch file processing is available as well by giving a directory as the second argument, e.g., ```python restore_all.py hr examples/```, which will process all files in the defined directory with the extension ```.txt```. You can get more info by running ```$ python restore_all.py -h```.
 
 If you require tokenisation, morphosyntactic tagging and / or lemmatisation, you will want to use the ```tag_all.py``` script.
 
 ```
-$ python tag_all.py hr example.txt.redi
+$ python tag_all.py hr examples/example.txt.redi
 ```
 
-You can inspect the output of the script in the file ```example.txt.redi.taglem```.
+You can inspect the output of the script in the file ```examples/example.txt.redi.taglem```.
 
-Finally, if you require dependency parsing as well, you can use the ```parse_all.py``` script.
+If you require named entity recognition with morphosyntactic tagging and lemmatisation, you will use the ```ner_all.py``` script.
 
 ```
-$ python parse_all.py hr example.txt.redi
+$ python ner_all.py hr examples/example.txt.redi
 ```
 
-The output of this script is available in the file ```example.txt.redi.parse```. The interface of all three scripts scripts is very similar.
+You can inspect the output of the script in the file ```examples/example.txt.redi.tagNERlem```.
+
+If you require dependency parsing as well, you can use the ```parse_all.py``` script.
+
+```
+$ python parse_all.py hr examples/example.txt.redi
+```
+
+The output of this script is available in the file ```examples/example.txt.redi.parse```. The interface of all three scripts scripts is very similar.
 
 ### Library
 
@@ -74,6 +83,11 @@ If you want to use the web service responses in your own code, you probably want
 >>> p=Parser('hr')
 >>> p.authorize('my_username','my_password')
 >>> json.loads(p.tagLemmatiseParse(u'Ovi alati rade dobro.'.encode('utf8')))
+
+>>> from reldi.ner_tagger import NERTagger
+>>> n=NERTagger('hr')
+>>> n.authorize('my_username','my_password')
+>>> json.loads(n.tag(u'Ovi alati u Sloveniji rade dobro.'.encode('utf8')))
 
 >>> from reldi.lexicon import Lexicon
 >>> lex=Lexicon('hr')
