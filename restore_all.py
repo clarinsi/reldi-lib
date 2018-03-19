@@ -29,4 +29,4 @@ if __name__ == "__main__":
     else:
         for file in os.listdir(args.path):
             if file.endswith('.txt'):
-                write(json.loads(tagger.tagLemmatise(open(os.path.join(args.path,file)).read().decode(coding).encode('utf8'))),open(os.path.join(args.path,file)+'.taglem','w'))
+                write(json.loads(restorer.restore(open(os.path.join(args.path,file)).read().decode(coding).encode('utf8'))),open(os.path.join(args.path,file)+'.redi','w'))
