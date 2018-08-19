@@ -1,6 +1,6 @@
 # The ReLDI web services library
 
-This repository contains the documentation and some handy scripts for using the ReLDI web services library. For gaining access to the ReLDI web services please visit [http://nl.ijs.si/services](http://nl.ijs.si/services).
+This repository contains the documentation and some handy scripts for using the ReLDI web services library. For gaining access to the ReLDI web services please visit [http://nl.ijs.si/services](http://clarin.si/services/web/).
 
 [ReLDI](https://reldi.spur.uzh.ch) is a SNSF-funded SCOPES project under which a series of resources and tools for processing South-Slavic languages were developed.
 
