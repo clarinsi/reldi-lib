@@ -12,7 +12,7 @@ def write(result,file):
     text=result['text']
     for token,norm in zip(result['tokens']['token'],result['orthography']['correction']):
         if token['text']!=norm['text']:
-            text=text[:int(token['startChar'])-1]+norm['text']+text[int(token['endChar']):]
+            text=text[:int(token['start'])-1]+norm['text']+text[int(token['end']):]
     file.write(text.encode(coding))
     file.close()
 
